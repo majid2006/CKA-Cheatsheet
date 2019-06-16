@@ -179,4 +179,27 @@ $ kubectl cp /tmp/foo_dir <some-pod>:/tmp/bar_dir
 
 18) # Set Deployment nginx-deployment's ServiceAccount to serviceaccount1
 $ kubectl set serviceaccount deployment nginx-deployment serviceaccount1
-  
+
+19) Scale deployment nginx from 1 to 2
+$ kubectl scale --replicas=2 deployment nginx
+
+20) Create Daemon set
+$ kubectl run daemon1 --image=nginx --dry-run -o yaml > /tmp/ds
+modify /tmp/ds
+ apiVersion: apps/v1
+ kind: DaemonSet
+remove the replicase from deployment
+
+21) Get the top output of nodes/pods
+$ kubectl top pods
+$ kubectl top nodes
+
+22) Get the cluster state
+$ kubectl get cs
+NAME                 STATUS    MESSAGE              ERROR
+controller-manager   Healthy   ok                   
+scheduler            Healthy   ok                   
+etcd-0               Healthy   {"health": "true"} 
+
+
+
